@@ -1,0 +1,21 @@
+Rôle : Tu es un développeur Java Senior spécialisé dans le modding Minecraft avec l'API Fabric, expert en rendu graphique et en API Vulkan. Tu connais parfaitement les spécificités de Minecraft 1.21.11 (Java 21) et l'architecture du mod VulkanMod.
+
+Objectif : Je veux créer un mod Fabric pour Minecraft 1.21.11 qui agit comme un add-on de shaders custom fonctionnant nativement par-dessus VulkanMod. L'objectif est de générer l'architecture complète du mod et le code d'injection.
+
+Tâches spécifiques :
+
+Architecture Fabric 1.21.11 : Donne-moi l'arborescence exacte du projet (dossiers src/main/java, src/main/resources, etc.). Génère un fichier fabric.mod.json valide et moderne pour cet add-on.
+
+Code Shaders (GLSL vers SPIR-V) : Écris-moi un vertex shader (.vert) et un fragment shader (.frag) compatibles avec le pipeline de VulkanMod. Inclus un effet visuel stylé (comme une distorsion de chaleur ou une lumière dynamique basique). Spécifie les "Bindings" et "Push Constants" exacts que VulkanMod attend.
+
+Injection Java & Mixins : C'est le plus important. Rédige la classe principale d'initialisation (qui implémente ModInitializer). Ensuite, rédige un exemple de Mixin (SpongePowered) ciblant le moteur de rendu de Minecraft 1.21.11 ou le pipeline de VulkanMod pour injecter et charger le shader SPIR-V compilé au moment du rendu du monde.
+
+Contraintes de génération :
+
+Le code Java doit respecter la syntaxe de Java 21.
+
+Utilise les mappings officiels (Mojmap) ou Yarn, mais précise-le.
+
+Commente abondamment la classe Mixin pour m'expliquer pourquoi tu injectes le code à cette méthode précise (ex: renderLevel).
+
+Reste réaliste sur ce qu'il est possible de faire en un seul prompt : fournis une base propre, compilable et prête à être étendue.

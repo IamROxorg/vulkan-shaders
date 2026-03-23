@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "vulkan-shaders",
+  "version": "${version}",
+  "name": "Vulkan Shaders Addon",
+  "description": "Un add-on de shaders custom fonctionnant nativement par-dessus VulkanMod.",
+  "authors": [
+    "Zigliix"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/vulkan-shaders/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "zigliix.vulkan.shaders.VulkanShadersClient"
+    ],
+    "main": [
+      "zigliix.vulkan.shaders.VulkanShaders"
+    ]
+  },
+  "mixins": [
+    "vulkan-shaders.mixins.json",
+    {
+      "config": "vulkan-shaders.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "vulkanmod": "*"
+  }
+}
