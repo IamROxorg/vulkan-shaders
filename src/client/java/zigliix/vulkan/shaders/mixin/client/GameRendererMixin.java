@@ -18,7 +18,7 @@ import net.vulkanmod.render.vertex.CustomVertexFormat;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.vulkan.VK10;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class GameRendererMixin {
         method = "renderLevel",
         at = @At("HEAD") // On injecte au tout début du rendu de la frame (HEAD)
     )
-    private void onRenderLevelStart(DeltaTracker deltaTracker, CallbackInfo ci) {
+    private void onRenderLevelStart(DeltaTracker tracker, CallbackInfo ci) {
         // 1. Calcul du temps (en secondes) pour l'animation du shader.
         // On utilise System.currentTimeMillis() pour avoir un écoulement du temps constant.
         float timeInSeconds = (System.currentTimeMillis() % 100000L) / 1000.0f;
@@ -54,11 +54,11 @@ public class GameRendererMixin {
             try {
                 // Lecture des sources GLSL depuis le resource pack
                 String vertSource = new String(Minecraft.getInstance().getResourceManager()
-                        .getResourceOrThrow(ResourceLocation.fromNamespaceAndPath("vulkan-shaders", "shaders/heat.vert"))
+                        .getResourceOrThrow(Identifier.fromNamespaceAndPath("vulkan-shaders", "shaders/heat.vert"))
                         .open().readAllBytes());
                 
                 String fragSource = new String(Minecraft.getInstance().getResourceManager()
-                        .getResourceOrThrow(ResourceLocation.fromNamespaceAndPath("vulkan-shaders", "shaders/heat.frag"))
+                        .getResourceOrThrow(Identifier.fromNamespaceAndPath("vulkan-shaders", "shaders/heat.frag"))
                         .open().readAllBytes());
 
                 // Compilation à la volée en SPIR-V via Shaderc (intégré à VulkanMod)
