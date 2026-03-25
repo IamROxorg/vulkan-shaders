@@ -3,7 +3,7 @@ package zigliix.vulkan.shaders;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 public class VulkanShaders implements ModInitializer {
     public static final String MOD_ID = "vulkan-shaders";
