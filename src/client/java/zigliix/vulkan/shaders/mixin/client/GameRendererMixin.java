@@ -40,7 +40,7 @@ public class GameRendererMixin {
     // Utilisation de DeltaTracker en 1.21.1+ au lieu du vieux float tickDelta
     @Inject(
         method = "renderLevel",
-        at = @At("HEAD") // On injecte au tout début du rendu de la frame (HEAD)
+        at = @At("RETURN") // On injecte à la fin du rendu de la frame pour que VulkanMod ait fini son initialisation de base de la passe
     )
     private void onRenderLevelStart(DeltaTracker tracker, CallbackInfo ci) {
         // 1. Calcul du temps (en secondes) pour l'animation du shader.
